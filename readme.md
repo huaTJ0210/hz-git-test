@@ -1,6 +1,6 @@
 ### git init
 
-> 初始化仓库
+> 初始化仓库,生成.git目录
 
 ### git add xx / git add .
 
