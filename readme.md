@@ -8,7 +8,7 @@
 
 ### git commit -m'change message'
 
-> 将暂存区的内容纳入到版本控制中
+> 将暂存区的内容纳入到版本控制中,并标注修改的简介
 
 ### git branch your-branch-name
 
