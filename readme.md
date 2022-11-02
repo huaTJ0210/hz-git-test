@@ -2,7 +2,7 @@
 
 > 初始化仓库
 
-### git add xx
+### git add xx / git add .
 
 > 将修改添加到暂存区
 
