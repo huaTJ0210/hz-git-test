@@ -1,6 +1,6 @@
 ### git init
 
-> 初始化仓库,生成.git目录
+> 初始化仓库,生成.git 目录
 
 ### git add xx / git add .
 
@@ -33,3 +33,15 @@
 ### git rebase xx
 
 > 与 xx 进行合并，能得到线性的提交记录
+
+### HEAD
+
+> HEAD 是一个指针，指向的是当前工作分支最近一次提交
+> 通过 git checkout xx 即能改变当前 HEAD 的指向
+### 相对引用
+> 避免使用哈希值来指定移动提交记录，可以使用相对引用（~）来简化
+> ~num ： num代表向上移动的提交记录步数
+
+### 强行修改分支
+> git branch -f main HEAD~3
+> 上面的命令会将 main 分支强制指向 HEAD 的第 3 级父提交。
