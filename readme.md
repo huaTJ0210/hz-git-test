@@ -13,3 +13,5 @@
 
 ### git checkout -b branch-name
 > 创建并切换到指定的分支
+### git rebase xx
+> 与xx进行合并，能得到线性的提交记录
