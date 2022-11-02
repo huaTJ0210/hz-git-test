@@ -28,7 +28,7 @@
 
 ### git merge xxx
 
-> 与 xx 进行合并
+> 将当前分支与 xx 进行合并
 
 ### git rebase xx
 
