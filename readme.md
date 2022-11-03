@@ -1,3 +1,4 @@
+[learn git](https://learngitbranching.js.org/?locale=zh_CN)
 ### git init
 
 > 初始化仓库,生成.git 目录
