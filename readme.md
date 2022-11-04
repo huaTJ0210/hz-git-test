@@ -41,14 +41,13 @@
 
 > 将当前分支的提交移动到 branchName 的 HEAD 之后
 > 场景 1: 如果当前处于 bugFix 分支上，执行 git rebase main 则会将 bugFix 分支的提交（有可能是多个）移动到 main 分支上，此时在 main 分支上看上去是线性的；
-> 场景 2: 场景 1 执行后再 main 分支上，main 和 bugFix 并不在同一个提交结点上，需要 git rebase bugFix 将 main 往前进
 
 #### git rebase branchOne branchTwo
 
 > 将 branchTwo（包含在此分支上的多次提交）合并到 branchOne 的 HEAD 后
 > 如果在同一分支路径上，可以让 branchTwo 快速前进（和当前分支的 HEAD 保持一致）
 
-#### git rebae 的优缺点
+#### git rebase 的优缺点
 
 > 优点：Rebase 使你的提交树变得很干净, 所有的提交都在一条线上
 > 缺点：Rebase 修改了提交树的历史(舍弃开发分支)
