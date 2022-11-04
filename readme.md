@@ -34,15 +34,22 @@
 
 ### git rebase
 
-#### git rebase  branchName
-> 将当前分支的提交移动到branchName的HEAD之后
+> rebase 实际上就是取出一系列的提交记录，“复制”它们，然后在另外一个地方逐个的放下去。
+> rebase 的优势就是可以创造更线性的提交历史
+
+#### git rebase branchName
+
+> 将当前分支的提交移动到 branchName 的 HEAD 之后
+> 场景 1: 如果当前处于 bugFix 分支上，执行 git rebase main 则会将 bugFix 分支的提交（有可能是多个）移动到 main 分支上，此时在 main 分支上看上去是线性的；
+> 场景 2: 场景 1 执行后再 main 分支上，main 和 bugFix 并不在同一个提交结点上，需要 git rebase bugFix 将 main 往前进
 
 #### git rebase current branchName
 
-> 将 branchName（包含在此分支上的多次提交）合并到 current的HEAD 后
-> 如果在同一分支路径上，可以让 branchName 快速前进（和当前分支的HEAD保持一致）
+> 将 branchName（包含在此分支上的多次提交）合并到 current 的 HEAD 后
+> 如果在同一分支路径上，可以让 branchName 快速前进（和当前分支的 HEAD 保持一致）
 
-#### git rebae的优缺点
+#### git rebae 的优缺点
+
 > 优点：Rebase 使你的提交树变得很干净, 所有的提交都在一条线上
 > 缺点：Rebase 修改了提交树的历史
 
@@ -99,22 +106,28 @@
 > 2、在本地更新远程分支指针(如 origin/main)
 
 #### git fetch origin <place>
+
 > 只下载了远程仓库中 place 分支中的最新提交记录，并更新了 origin/foo
 
 #### git fetch origin :bar
+
 > 如果 fetch 空 到本地，会在本地创建一个新分支。
 
 ### git pull
 
 > 抓取远程仓库的更新，并与本地分支进行合并
 > 对于 git pull，其实就是（git fetch 及 git merge 的缩写）
+
 #### git pull --rebase
-> 拉取远端更新时采用rebase的方式进行
+
+> 拉取远端更新时采用 rebase 的方式进行
 
 #### git pull origin main
-> 从远端仓库拉取main的提交记录，并在本地更新origin/main(默认绑定)，然后再与当前HEAD进行merge操作
+
+> 从远端仓库拉取 main 的提交记录，并在本地更新 origin/main(默认绑定)，然后再与当前 HEAD 进行 merge 操作
 
 #### git pull origin main:foo
+
 > 先在本地创建了一个叫 foo 的分支，从远程仓库中的 main 分支中下载提交记录，并合并到 foo，然后再 merge 到我们的当前检出的分支 xxx 上
 
 ### git push
@@ -122,41 +135,50 @@
 > 推送本地分支到远程仓库
 
 #### git push <remote> <place>
-> git push origin main: 
-> 上述命令的执行步骤：1、切到本地仓库中的place分支，获取所有的提交，2、到远程仓库“origin”中找到place分支，将远程仓库中没有的提交记录都添加上去
+
+> git push origin main:
+> 上述命令的执行步骤：1、切到本地仓库中的 place 分支，获取所有的提交，2、到远程仓库“origin”中找到 place 分支，将远程仓库中没有的提交记录都添加上去
+
 #### git push origin <source>:<destination>
+
 > 提交本地分支内容： soure-本地分支，destination-远端分支
 
 #### git push origin :foo
-> push传递空值source，成功删除远程仓库的foo分支
 
-
+> push 传递空值 source，成功删除远程仓库的 foo 分支
 
 #### 提交代码场景（git push 被拒绝）
+
 > 基于远程分支开发的功能本地有提交，远端仓库也有提交，此时直接使用 git push 是不被允许的
-##### 使用git rebase解决
+
+##### 使用 git rebase 解决
 
 > 需要先获取远程更新到本地（git fetch），然后与本地进行合并（git rebase origin/xxx）,最终再进行提交（git push）
-> 使用git rebase能保证远端仓库提交的线性
+> 使用 git rebase 能保证远端仓库提交的线性
 
-##### 使用git merge解决
+##### 使用 git merge 解决
+
 > 需要先获取远程更新到本地（git fetch），然后与本地进行合并（git merge origin/xxx）,最终再进行提交（git push）；这样做远端会有本地合并的操作留痕
-> 使用git merge会导致远端仓库提交记录不是线性的 
+> 使用 git merge 会导致远端仓库提交记录不是线性的
 
-### pull request流程
+### pull request 流程
 
-#### 场景：忘记了创建分支，直接push会被拒绝
-> 新建一个分支feature, 推送到远程服务器. 然后reset你的main分支和远程服务器保持一致, 否则下次你pull并且他人的提交和你冲突的时候就会有问题.
+#### 场景：忘记了创建分支，直接 push 会被拒绝
+
+> 新建一个分支 feature, 推送到远程服务器. 然后 reset 你的 main 分支和远程服务器保持一致, 否则下次你 pull 并且他人的提交和你冲突的时候就会有问题.
 
 ### 远程跟踪
 
 > 本地仓库与远端进行关联（remote tracking）
-> 关联的时机是在git clone之后（git clone操作之后的输出：local branch "main" set to track remote branch "origin/main"）
+> 关联的时机是在 git clone 之后（git clone 操作之后的输出：local branch "main" set to track remote branch "origin/main"）
 
 ### 设置远程追踪分支
-#### 方法1： 创建分支并跟踪远程分支
-> git checkout -b localBranch origin/main
-#### 方法2：使用git branch -u
-> git branch -u origin/main  branchName
-> 上述命令会使得branchName追踪 origin/main
 
+#### 方法 1： 创建分支并跟踪远程分支
+
+> git checkout -b localBranch origin/main
+
+#### 方法 2：使用 git branch -u
+
+> git branch -u origin/main branchName
+> 上述命令会使得 branchName 追踪 origin/main
