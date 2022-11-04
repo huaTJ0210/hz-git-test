@@ -1,4 +1,4 @@
-[learn git](https://learngitbranching.js.org/?locale=zh_CN)
+[learn branch git](https://learngitbranching.js.org/?locale=zh_CN)
 
 ### git init
 
