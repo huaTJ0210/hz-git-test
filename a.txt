@@ -1,2 +1,3 @@
 a.txt
 local: add sth
+remote: add 12345
