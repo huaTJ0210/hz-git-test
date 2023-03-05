@@ -1,2 +1,3 @@
 a.txt
-local: add sth append 123
+local: local: add sth append 123
+remote: add 12345
