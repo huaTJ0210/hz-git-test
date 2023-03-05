@@ -1,2 +1,2 @@
 a.txt
-local: add sth
+local: add sth append 123
